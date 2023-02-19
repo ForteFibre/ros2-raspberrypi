@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 MAINTAINER Alberto Soragna alberto dot soragna at gmail dot com
 
 # working directory
@@ -18,14 +18,14 @@ RUN apt-get update && apt-get install -y \
   lsb-release \
   gnupg2
 
-# install gcc6 compiler and toolchain
+# install gcc11 compiler and toolchain
 RUN apt-get install -y \
-  gcc-6 \
-  g++-6 \
-  g++-6-arm-linux-gnueabihf
+  gcc-11 \
+  g++-11 \
+  gcc-11-aarch64-linux-gnu
 
 # set gcc6 as default compiler
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6  
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11
 
 #### ROS2
 
@@ -34,7 +34,7 @@ RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 ENV LANG en_US.UTF-8
 
 RUN curl http://repo.ros2.org/repos.key | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
+RUN sh -c 'echo "deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main jammy main" > /etc/apt/sources.list.d/ros2-latest.list'
 
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -54,9 +54,9 @@ RUN apt-get install -y \
 
 # use python 3.5
 RUN add-apt-repository ppa:deadsnakes/ppa -y
-RUN apt-get update && apt-get install -y python3.5
+RUN apt-get update && apt-get install -y python3.10
 
 RUN rm /usr/bin/python3
-RUN ln -s /usr/bin/python3.5 /usr/bin/python3
+RUN ln -s /usr/bin/python3.10 /usr/bin/python3
 
 

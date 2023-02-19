@@ -1,4 +1,4 @@
-FROM raspbian/stretch
+FROM --platform=arm64 ubuntu:22.04
 MAINTAINER Alberto Soragna alberto dot soragna at gmail dot com
 
 # working directory
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl http://repo.ros2.org/repos.key | apt-key add -
 
-RUN sh -c 'echo "deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main stretch main" > /etc/apt/sources.list.d/ros2-latest.list'
+RUN sh -c 'echo "deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main jammy main" > /etc/apt/sources.list.d/ros2-latest.list'
 
 # ROS setup requirements
 RUN apt-get update && apt-get install -y \
