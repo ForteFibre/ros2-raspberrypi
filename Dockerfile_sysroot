@@ -18,8 +18,13 @@ RUN curl https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | apt-ke
 
 RUN sh -c 'echo "deb [arch=amd64,arm64] http://packages.ros.org/ros2/ubuntu jammy main" > /etc/apt/sources.list.d/ros2-latest.list'
 
+# Install timezone data to prevent asking it in CLI
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
+
 # ROS setup requirements
-RUN apt-get update && apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
   build-essential \
   cmake \
   git \
