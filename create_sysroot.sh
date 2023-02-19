@@ -42,7 +42,7 @@ fi
 
 mkdir ros2-sysroot-ubuntu-rootfs
 
-tar -xf ros2-sysroot-ubuntu-rootfs.tar -C ros2-sysroot-ubuntu-rootfs etc lib opt usr
+tar -xf ros2-sysroot-ubuntu-rootfs.tar -C ros2-sysroot etc lib opt usr
 
 
 bash fix_ld_conf.sh
