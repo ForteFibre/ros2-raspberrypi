@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get install -y \
   gcc-11 \
   g++-11 \
-  gcc-11-aarch64-linux-gnu
+  gcc-11-aarch64-linux-gnu \
+  g++-11-aarch64-linux-gnu
 
 # set gcc6 as default compiler
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 60 --slave /usr/bin/g++ g++ /usr/bin/g++-11

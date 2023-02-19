@@ -7,7 +7,6 @@ set(CMAKE_CXX_COMPILER aarch64-linux-gnu-g++-11)
 
 set(CMAKE_SYSROOT /root/rootfs)
 
-
 set(CMAKE_FIND_ROOT_PATH
   /root/ros2_ws/install
 )
@@ -17,12 +16,11 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
-#set(CMAKE_BUILD_RPATH /root/rootfs/opt/vc)
+set(CMAKE_SYSTEM_PROCESSOR aarch64)
 
+# set(CMAKE_BUILD_RPATH /root/rootfs/opt/vc)
 
 # This assumes that pthread will be available on the target system
 # (this emulates that the return of the TRY_RUN is a return code "0"
 set(THREADS_PTHREAD_ARG "0"
   CACHE STRING "Result from TRY_RUN" FORCE)
-
-

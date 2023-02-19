@@ -5,6 +5,9 @@
 
 export TOOLCHAIN_PREFIX=aarch64-linux-gnu
 
+if [ -f /opt/ros/humble/setup.bash ]; then
+  source /opt/ros/humble/setup.bash
+fi
 
 colcon \
     build \

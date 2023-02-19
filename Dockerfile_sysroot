@@ -28,19 +28,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
   build-essential \
   cmake \
   git \
-  python3-flake8-docstrings \
-  python3-pip \
-  python3-pytest-cov \
-  python3-vcstool \
   ros-dev-tools \
   wget \
-  python3-flake8-blind-except \
-  python3-flake8-builtins \
-  python3-flake8-class-newline \
-  python3-flake8-comprehensions \
-  python3-flake8-deprecated \
-  python3-flake8-import-order \
-  python3-flake8-quotes \
-  python3-pytest-repeat \
-  python3-pytest-rerunfailures \
-  python3-argcomplete
+  ros-humble-ros-base
+
