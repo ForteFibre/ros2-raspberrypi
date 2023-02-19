@@ -14,7 +14,7 @@ colcon \
     --merge-install \
     --cmake-force-configure \
     --cmake-args \
-    -DCMAKE_TOOLCHAIN_FILE=`pwd`/rpi4_toolchainfile.cmake \
+    -DCMAKE_TOOLCHAIN_FILE=/root/rpi4_toolchainfile.cmake \
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
     -DTHIRDPARTY=ON \
     -DBUILD_TESTING:BOOL=OFF \

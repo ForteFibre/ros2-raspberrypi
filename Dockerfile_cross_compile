@@ -51,3 +51,11 @@ RUN apt-get update && apt-get install -y \
   ros-dev-tools \
   software-properties-common \
   git
+
+COPY cross_compile.sh /root
+COPY rpi4_toolchainfile.cmake /root
+
+VOLUME [ "/root/ros2_ws" ]
+WORKDIR /root/ros2_ws
+
+CMD [ "bash", "/root/cross_compile.sh" ]

@@ -1,8 +1,9 @@
 #!/bin/bash
 
-echo "Build Docker image"
-
-docker build -t ghcr.io/rpi4_cross_compile -f Dockerfile_cross_compile .
+if [ ! -f .PREBUILT ]; then
+  echo "Build Docker image"
+  docker build -t rpi4_cross_compile -f Dockerfile_cross_compile .
+fi
 
 docker run -it \
   --volume $PWD/ros2-sysroot:/root/rootfs \
