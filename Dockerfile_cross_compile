@@ -48,19 +48,17 @@ RUN apt-get update && apt-get install -y \
   python3-flake8-docstrings \
   python3-pip \
   python3-pytest-cov \
+  python3-vcstool \
   ros-dev-tools \
   software-properties-common \
   git
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-  build-essential:arm64 \
-  ros-dev-tools:arm64 \
-  ros-humble-ros-base:arm64
+RUN apt-get install -y python3-lark python3-dev
 
-COPY cross_compile.sh /root
-COPY rpi4_toolchainfile.cmake /root
+COPY scripts/ /scripts/
 
 VOLUME [ "/root/ros2_ws" ]
 WORKDIR /root/ros2_ws
 
-CMD [ "bash", "/root/cross_compile.sh" ]
+ENTRYPOINT [ "/bin/bash" ]
+CMD ["/scripts/cross_compile.sh"]

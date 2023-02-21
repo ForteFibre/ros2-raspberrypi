@@ -7,7 +7,7 @@ fi
 
 docker run -it \
   --volume $PWD/ros2-sysroot:/root/rootfs \
-  --volume $PWD/ros2_ws:/root/ros2_ws \
-  --volume $PWD/ros2_humble:/root/ros2 \
+  --volume $PWD/ros2_humble:/root/ros2_ws \
   -w /root/ros2_ws \
-  rpi4_cross_compile
+  rpi4_cross_compile \
+  /scripts/build_ros.sh
