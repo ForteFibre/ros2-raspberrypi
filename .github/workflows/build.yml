@@ -1,0 +1,24 @@
+name: "Build"
+on: push
+
+jobs:
+  build-cross:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run sysroot script
+        run: |
+          export ROS2_CROSS_ROOT=$GITHUB_WORKSPACE
+          bash scripts/system/create_sysroot.sh
+          bash scripts/system/build_ros2_base.sh
+          bash scripts/system/create_release.sh
+        env:
+          ROS2_CROSS_ROOT: ~/buildroot
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ros-arm64-cross-tools
+          path: |
+            *.tgz
+            scripts/release/*
+            README.md
