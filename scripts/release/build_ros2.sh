@@ -32,7 +32,12 @@ if [ ! -d $ROS2_WS ]; then
   exit
 fi
 
-docker run --rm -it \
+TTY_OPTS=
+if [ -t 1 ]; then
+  TTY_OPTS=-it
+fi
+
+docker run --rm $TTY_OPTS \
   --volume $ROS2_CROSS_ROOT/ros2_sysroot:/root/rootfs \
   --volume $ROS2_WS:/root/ros2_ws \
   --volume $ROS2_CROSS_ROOT/ros2_humble:/root/ros2 \

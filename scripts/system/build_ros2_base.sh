@@ -15,8 +15,13 @@ if [ ! -f "$ROS2_CROSS_ROOT/.PREBUILT" ]; then
   docker build -t ros2_arm64_cross -f $ROS2_CROSS_ROOT/docker/Dockerfile_cross_compile $ROS2_CROSS_ROOT/docker
 fi
 
+TTY_OPTS=
+if [ -t 1 ]; then
+  TTY_OPTS=-it
+fi
+
 echo "Building ROS system..."
-docker run --rm -it \
+docker run --rm $TTY_OPTS \
   --volume $PWD/ros2_sysroot:/root/rootfs \
   --volume $PWD/ros2_humble:/root/ros2_ws \
   -w /root/ros2_ws \
