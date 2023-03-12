@@ -27,6 +27,10 @@ set(CMAKE_SYSTEM_PROCESSOR aarch64)
 set(THREADS_PTHREAD_ARG "0"
   CACHE STRING "Result from TRY_RUN" FORCE)
 
+set(SM_RUN_RESULT "PTHREAD_RWLOCK_PREFER_READER_NP"
+  CACHE STRING "Result from TRY_RUN" FORCE)
+set(SM_RUN_RESULT__TRYRUN_OUTPUT "PTHREAD_RWLOCK_PREFER_READER_NP"
+  CACHE STRING "Result from TRY_RUN" FORCE)
 # Python related
 set(PYTHON_LIBRARY /root/rootfs/usr/lib/aarch64-linux-gnu/libpython3.10.a)
 set(PYTHON_INCLUDE_DIR /root/rootfs/usr/include/python3.10/)

@@ -15,6 +15,7 @@ touch src/ros/robot_state_publisher/COLCON_IGNORE
 touch src/ros2/demos/COLCON_IGNORE
 touch src/ros-visualization/COLCON_IGNORE
 touch src/ros/ros_tutorials/turtlesim/COLCON_IGNORE
+touch src/ignition/COLCON_IGNORE
 
 echo "Building"
 bash /scripts/cross_compile.sh
