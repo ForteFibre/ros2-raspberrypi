@@ -16,10 +16,10 @@ docker create --name ros2_cross ros2_arm64_cross
 
 echo "Exporting Docker container..."
 
-docker container export -o - ros2_cross | gzip -c > $ROS2_CROSS_ROOT/ros2-cross.tgz
+docker container export ros2_cross | gzip -c > $ROS2_CROSS_ROOT/ros2-cross.tgz
 docker rm ros2_cross
 
 echo "## Create env image"
 
-tar -czf -C $ROS2_CROSS_ROOT ros2-sysroot.tgz ros2_sysroot
-tar -czf -C $ROS2_CROSS_ROOT ros2-prebuild.tgz ros2_humble
+tar -czf ros2-sysroot.tgz -C $ROS2_CROSS_ROOT/ros2_sysroot .
+tar -czf ros2-prebuild.tgz -C $ROS2_CROSS_ROOT/ros2_humble install
