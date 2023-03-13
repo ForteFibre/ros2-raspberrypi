@@ -21,9 +21,17 @@ if [ ! -f "$ROS2_CROSS_ROOT/.PREBUILT" ]; then
   docker build -t ros2_arm64_cross -f $ROS2_CROSS_ROOT/docker/Dockerfile_cross_compile $ROS2_CROSS_ROOT/docker
 fi
 
-ROS2_WS=$PWD/ros2_ws
+if [ -z "$ROS2_WS" ]; then
+  ROS2_WS=$PWD/ros2_ws
+fi
+
 if [ ! -d $ROS2_WS ]; then
   ROS2_WS=$HOME/ros2_ws
+  echo "Fallback ROS workspace path to $ROS2_WS"
+fi
+
+if [ ! -d $ROS2_WS ]; then
+  ROS2_WS=$PWD
   echo "Fallback ROS workspace path to $ROS2_WS"
 fi
 
@@ -31,6 +39,12 @@ if [ ! -d $ROS2_WS ]; then
   echo "ROS workspace cannot be found"
   exit
 fi
+
+if [ ! -d "$ROS2_WS/src" ]; then
+  echo "ROS source directory cannot be found"
+  exit
+fi
+
 
 TTY_OPTS=
 if [ -t 1 ]; then
