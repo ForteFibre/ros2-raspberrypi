@@ -10,7 +10,7 @@ if [ ! -d $ROS2_CROSS_ROOT/ros2_sysroot ]; then
  exit 1
 fi
 
-if [ ! -d $ROS2_CROSS_ROOT/ros2_humle ]; then
+if [ ! -d $ROS2_CROSS_ROOT/ros2_humble ]; then
  echo "Prebuilt ROS base cannot be found"
  exit 1
 fi
