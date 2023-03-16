@@ -60,5 +60,4 @@ COPY scripts/ /scripts/
 VOLUME [ "/root/ros2_ws" ]
 WORKDIR /root/ros2_ws
 
-ENTRYPOINT [ "/bin/bash" ]
-CMD ["/scripts/cross_compile.sh"]
+ENTRYPOINT [ "/bin/bash", "/scripts/cross_compile.sh" ]
