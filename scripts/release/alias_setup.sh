@@ -21,7 +21,7 @@ if [ ! -f "$ROS2_CROSS_ROOT/.PREBUILT" ]; then
   docker build -t ros2_arm64_cross -f $ROS2_CROSS_ROOT/docker/Dockerfile_cross_compile $ROS2_CROSS_ROOT/docker
 fi
 
-colcon_cross() {
+colcon_cross_build() {
     TTY_OPTS=
     if [ -t 1 ]; then
         TTY_OPTS=-it
@@ -37,6 +37,6 @@ colcon_cross() {
         ros2_arm64_cross "$@"
 }
 
-export -f colcon_cross
+export -f colcon_cross_build
 
-echo "colcon_cross is now available!"
+echo "colcon_cross_build is now available!"
