@@ -7,12 +7,14 @@ fi
 
 touch "$ROS2_CROSS_ROOT/.PREBUILT"
 
-cat $ROS2_CROSS_ROOT/ros2-cross.tgz | gunzip -c - | docker import - ros2_arm64_cross
+cat $ROS2_CROSS_ROOT/ros2-cross.tgz | gunzip -c - | docker load
 
-if [ ! -d $ROS2_CROSS_ROOT/ros2_sysroot ]; then
+if [ ! -d $ROS2_CROSS_ROOT/ros2_sysroot/etc ]; then
+ mkdir -p $ROS2_CROSS_ROOT/ros2_sysroot
  tar -zxf $ROS2_CROSS_ROOT/ros2-sysroot.tgz -C $ROS2_CROSS_ROOT/ros2_sysroot etc lib opt usr
 fi
 
-if [ ! -d $ROS2_CROSS_ROOT/ros2_humble ]; then
+if [ ! -d $ROS2_CROSS_ROOT/ros2_humble/install ]; then
+ mkdir -p $ROS2_CROSS_ROOT/ros2_humble
  tar -zxf $ROS2_CROSS_ROOT/ros2-prebuild.tgz -C $ROS2_CROSS_ROOT/ros2_humble .
 fi

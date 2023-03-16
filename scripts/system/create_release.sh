@@ -16,7 +16,7 @@ docker create --name ros2_cross ros2_arm64_cross
 
 echo "Exporting Docker container..."
 
-docker container export ros2_cross | gzip -c > $ROS2_CROSS_ROOT/ros2-cross.tgz
+docker save ros2_cross | gzip -c > $ROS2_CROSS_ROOT/ros2-cross.tgz
 docker rm ros2_cross
 
 echo "## Create env image"
