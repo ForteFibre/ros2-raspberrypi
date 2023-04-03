@@ -6,18 +6,9 @@ if [ -z "$ROS2_CROSS_ROOT" ]; then
 fi
 
 echo "## Create Cross builder image"
-echo "Remove old Docker containers"
-
-docker kill ros2_cross
-docker rm ros2_cross
-
-echo "Create new Docker container"
-docker create --name ros2_cross ros2_arm64_cross
-
 echo "Exporting Docker container..."
 
-docker save ros2_cross | gzip -c > $ROS2_CROSS_ROOT/ros2-cross.tgz
-docker rm ros2_cross
+docker save ros2_arm64_cross | gzip -c > $ROS2_CROSS_ROOT/ros2-cross.tgz
 
 echo "## Create env image"
 
