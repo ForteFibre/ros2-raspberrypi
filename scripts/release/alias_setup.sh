@@ -40,7 +40,8 @@ setup_colcon_cross() {
       ros2_arm64_cross "$@"
     
     echo "Rewriting path of packages"
-    find $PWD/install/share/ament_index/resource_index/parent_prefix_path -type f -exec sed -i s%/root/ros2%$PWD% {} ";"
+    find $PWD/install/share/ament_index/resource_index/parent_prefix_path -type f -exec sed -i s%/root/ros2_ws%$PWD% {} ";"
+    find $PWD/install/share/ament_index/resource_index/parent_prefix_path -type f -exec sed -i s%/root/ros2/install%/opt/ros/$ROS_DISTRO% {} ";"
   }
 
   export -f colcon_cross_build

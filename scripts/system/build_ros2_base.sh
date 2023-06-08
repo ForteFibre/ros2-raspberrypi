@@ -23,8 +23,8 @@ fi
 echo "Building ROS system..."
 docker run --rm $TTY_OPTS \
   --volume $PWD/ros2_sysroot:/root/rootfs \
-  --volume $PWD/ros2_humble:/root/ros2_ws \
-  -w /root/ros2_ws \
+  --volume $PWD/ros2_humble:/root/ros2 \
+  -w /root/ros2 \
   --entrypoint /bin/bash \
   --env UID=`id -u` \
   --env GID=`id -g` \

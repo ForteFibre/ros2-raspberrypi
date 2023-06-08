@@ -10,7 +10,9 @@ export SYSROOT=/root/rootfs
 export PYTHON_LIBRARY="${SYSROOT}/usr/lib/aarch64-linux-gnu/libpython3.10.so"
 export PYTHON_INCLUDE_DIR="${SYSROOT}/usr/include/python3.10"
 
-source /root/ros2/install/setup.bash
+if [ -f /root/ros2/install/setup.bash ]; then
+    source /root/ros2/install/setup.bash
+fi
 
 colcon \
     build \
@@ -26,4 +28,6 @@ colcon \
     -DPYTHON_INCLUDE_DIR=$PYTHON_INCLUDE_DIR \
     "$@"
 
-chown -R $UID:$GID /root/ros2
+if [ -d /root/ros2_ws ]; then
+    chown -R $UID:$GID /root/ros2_ws
+fi
