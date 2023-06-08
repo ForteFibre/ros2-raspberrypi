@@ -55,5 +55,7 @@ docker run --rm $TTY_OPTS \
   --volume $ROS2_CROSS_ROOT/ros2_sysroot:/root/rootfs \
   --volume $ROS2_WS:/root/ros2_ws \
   --volume $ROS2_CROSS_ROOT/ros2_humble:/root/ros2 \
+  --env UID=`id -u` \
+  --env GID=`id -g` \
   -w /root/ros2_ws \
   ros2_arm64_cross

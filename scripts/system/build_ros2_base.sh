@@ -26,5 +26,7 @@ docker run --rm $TTY_OPTS \
   --volume $PWD/ros2_humble:/root/ros2_ws \
   -w /root/ros2_ws \
   --entrypoint /bin/bash \
+  --env UID=`id -u` \
+  --env GID=`id -g` \
   ros2_arm64_cross \
   /scripts/build_ros.sh
