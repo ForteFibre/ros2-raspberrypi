@@ -25,3 +25,5 @@ colcon \
     -DPYTHON_LIBRARY=$PYTHON_LIBRARY \
     -DPYTHON_INCLUDE_DIR=$PYTHON_INCLUDE_DIR \
     "$@"
+
+chown -R $UID:$GID /root/ros2
